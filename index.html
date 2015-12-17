@@ -17,22 +17,33 @@
 
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-      <script src="js/underscore-min.js"></script>
-      <script src="js/cell.js"></script>
-      <script src="js/labyrinth.js"></script>
+  <script src="js/underscore-min.js"></script>
+  <script src="js/cell.js"></script>
+  <script src="js/labyrinth.js"></script>
 </head>
 <body>
 	<div id="draw_area">
-           <canvas id="labyrinth" width="600" height="600"></canvas>
-       </div>
+    <canvas id="labyrinth" width="600" height="600"></canvas>
+  </div>
 	<div id="configuration"></div>
+    <script>
+      var labyrinth = new Labyrinth(document, 'labyrinth');
+      //labyrinth.solve();
+      //labyrinth.drawSolution();
 
-      <script>
-            var labyrinth = new Labyrinth(document, 'labyrinth');
-            labyrinth.generate(30,30);
-            labyrinth.draw();
-            labyrinth.solve();
-            labyrinth.drawSolution();
-        </script>
+      setTimeout(function() {
+        labyrinth.generate(30,30);
+        labyrinth.draw();
+        $("#solve").show();
+      }, 1000);
+
+      $(function() {
+        $('#solve').click(function() {
+          labyrinth.solve();
+          labyrinth.drawSolution();
+        });
+      });
+    </script>
+  <input type="button" value="Find a way" id="solve">
 </body>
 </html>
