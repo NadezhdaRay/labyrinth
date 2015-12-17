@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<title>labyrinth</title>
 
   <link rel="stylesheet" href="css/bootstrap.css">
@@ -17,9 +17,22 @@
 
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+      <script src="js/underscore-min.js"></script>
+      <script src="js/cell.js"></script>
+      <script src="js/labyrinth.js"></script>
 </head>
 <body>
-	<div id="draw_area"></div>
+	<div id="draw_area">
+           <canvas id="labyrinth" width="600" height="600"></canvas>
+       </div>
 	<div id="configuration"></div>
+
+      <script>
+            var labyrinth = new Labyrinth(document, 'labyrinth');
+            labyrinth.generate(30,30);
+            labyrinth.draw();
+            labyrinth.solve();
+            labyrinth.drawSolution();
+        </script>
 </body>
 </html>
